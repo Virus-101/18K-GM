@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gold Maroc 18K</string>
+    <string name="channel_alerts">Alertes de prix</string>
+    <string name="notif_above">Prix 18K au-dessus de votre seuil</string>
+    <string name="notif_below">Prix 18K sous votre seuil</string>
+    <string name="notif_body">%1$s MAD/g — cours du %2$s (récupéré il y a %3$d min)</string>
+
+    <string name="tab_home">Accueil</string>
+    <string name="tab_calc">Calculateur</string>
+    <string name="tab_settings">Réglages</string>
+
+    <string name="label_18k">Or 18 carats</string>
+    <string name="label_24k">Or 24 carats</string>
+    <string name="label_xau">XAU/USD (once troy)</string>
+    <string name="label_fx">USD/MAD</string>
+    <string name="unit_mad_g">MAD/g</string>
+    <string name="last_sync">Dernière récupération</string>
+    <string name="source_at">Source : %1$s</string>
+    <string name="next_refresh">Prochaine : %1$s (heure du Maroc)</string>
+
+    <string name="data_status">Données : %1$s</string>
+    <string name="status_ok">à jour</string>
+    <string name="status_delayed">retardées</string>
+    <string name="status_old">anciennes</string>
+    <string name="status_unavailable">indisponibles</string>
+    <string name="no_data">Aucune donnée disponible. Connectez-vous à Internet puis appuyez sur « Actualiser maintenant ».</string>
+    <string name="na">n/d</string>
+    <string name="change_prev">vs précédente : %1$s</string>
+    <string name="change_24h">24 h : %1$s</string>
+
+    <string name="warn_gold_delay">Le cours de l\'or est retardé de 15 min par le fournisseur (accès gratuit).</string>
+    <string name="warn_gold_stale">GoldPrice.dev signale ce cours comme périmé (is_stale).</string>
+    <string name="warn_missed">Actualisation programmée manquée : dernières données valides affichées.</string>
+    <string name="warn_fx_old">Taux de change ancien : plus de 36 h sans nouvelle valeur du fournisseur.</string>
+    <string name="warn_unsync">Données non synchronisées : une source n\'a pas répondu. Les dernières valeurs valides de chaque source sont conservées avec leur date.</string>
+
+    <string name="refresh_now">Actualiser maintenant</string>
+    <string name="refreshing">Actualisation…</string>
+    <string name="msg_ok">Actualisation réussie (les deux sources).</string>
+    <string name="msg_partial">Actualisation partielle — %1$s</string>
+    <string name="msg_fail">Échec — %1$s</string>
+    <string name="msg_throttled">Patientez un peu avant une nouvelle tentative (limites des API).</string>
+
+    <string name="chart_title">Évolution du prix 18K</string>
+    <string name="chart_note">Points enregistrés par l\'application à chaque actualisation réussie. Aucun historique externe n\'est importé.</string>
+    <string name="chart_empty">Pas assez de points enregistrés sur cette période (%1$d).</string>
+    <string name="chart_span">Premier point enregistré : %1$s</string>
+
+    <string name="calc_title">Calculateur</string>
+    <string name="calc_grams">Poids</string>
+    <string name="calc_disclaimer">Prix théoriques de l\'or pur au prorata du titre : hors poinçon, façon, taxes et marge du bijoutier.</string>
+
+    <string name="settings_notifs">Notifications d\'alerte</string>
+    <string name="alert_above">Alerter au-dessus de (MAD/g, 18K)</string>
+    <string name="alert_below">Alerter sous (MAD/g, 18K)</string>
+    <string name="save">Enregistrer</string>
+    <string name="settings_language">Langue</string>
+    <string name="lang_fr">Français</string>
+    <string name="lang_ar">العربية</string>
+    <string name="about_title">À propos des données</string>
+    <string name="about_schedule">Actualisations planifiées : 07:00, 10:00, 13:00 et 18:00, du lundi au samedi (heure du Maroc). Android peut différer l\'exécution en arrière-plan.</string>
+    <string name="about_sources">Cours de l\'or : GoldPrice.dev (retard de 15 min). Taux de change : ExchangeRate-API.com (https://www.exchangerate-api.com). Prix théoriques, non contractuels.</string>
+</resources>

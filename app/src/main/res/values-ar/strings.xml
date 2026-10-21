@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gold Maroc 18K</string>
+    <string name="channel_alerts">تنبيهات الأسعار</string>
+    <string name="notif_above">سعر الذهب عيار 18 فوق الحد الذي حددتموه</string>
+    <string name="notif_below">سعر الذهب عيار 18 تحت الحد الذي حددتموه</string>
+    <string name="notif_body">%1$s درهم/غ — سعر %2$s (جُلب قبل %3$d دقيقة)</string>
+
+    <string name="tab_home">الرئيسية</string>
+    <string name="tab_calc">الحاسبة</string>
+    <string name="tab_settings">الإعدادات</string>
+
+    <string name="label_18k">ذهب عيار 18</string>
+    <string name="label_24k">ذهب عيار 24</string>
+    <string name="label_xau">XAU/USD (الأونصة)</string>
+    <string name="label_fx">USD/MAD</string>
+    <string name="unit_mad_g">درهم/غ</string>
+    <string name="last_sync">آخر جلب</string>
+    <string name="source_at">المصدر: %1$s</string>
+    <string name="next_refresh">التالي: %1$s (توقيت المغرب)</string>
+
+    <string name="data_status">البيانات: %1$s</string>
+    <string name="status_ok">محدّثة</string>
+    <string name="status_delayed">متأخرة</string>
+    <string name="status_old">قديمة</string>
+    <string name="status_unavailable">غير متوفرة</string>
+    <string name="no_data">لا توجد بيانات. اتصلوا بالإنترنت ثم اضغطوا «حدّث الآن».</string>
+    <string name="na">غير متاح</string>
+    <string name="change_prev">مقارنة بالسابق: %1$s</string>
+    <string name="change_24h">24 ساعة: %1$s</string>
+
+    <string name="warn_gold_delay">سعر الذهب متأخر 15 دقيقة من قِبل المزوّد (الوصول المجاني).</string>
+    <string name="warn_gold_stale">يشير GoldPrice.dev إلى أن هذا السعر قديم (is_stale).</string>
+    <string name="warn_missed">فات موعد التحديث المبرمج: تُعرض آخر بيانات صالحة.</string>
+    <string name="warn_fx_old">سعر الصرف قديم: أكثر من 36 ساعة دون قيمة جديدة من المزوّد.</string>
+    <string name="warn_unsync">البيانات غير متزامنة: لم يستجب أحد المصدرين. تُحفظ آخر قيمة صالحة لكل مصدر مع تاريخها.</string>
+
+    <string name="refresh_now">حدّث الآن</string>
+    <string name="refreshing">جارٍ التحديث…</string>
+    <string name="msg_ok">نجح التحديث (المصدران معًا).</string>
+    <string name="msg_partial">تحديث جزئي — %1$s</string>
+    <string name="msg_fail">فشل — %1$s</string>
+    <string name="msg_throttled">انتظروا قليلًا قبل محاولة جديدة (حدود الواجهات).</string>
+
+    <string name="chart_title">تطوّر سعر عيار 18</string>
+    <string name="chart_note">نقاط سجّلها التطبيق عند كل تحديث ناجح. لا يتم استيراد أي تاريخ خارجي.</string>
+    <string name="chart_empty">عدد النقاط المسجّلة غير كافٍ لهذه الفترة (%1$d).</string>
+    <string name="chart_span">أول نقطة مسجّلة: %1$s</string>
+
+    <string name="calc_title">الحاسبة</string>
+    <string name="calc_grams">الوزن</string>
+    <string name="calc_disclaimer">أسعار نظرية للذهب الخالص بنسبة العيار: دون الدمغة والصنعة والضرائب وهامش الصائغ.</string>
+
+    <string name="settings_notifs">إشعارات التنبيه</string>
+    <string name="alert_above">نبّهني فوق (درهم/غ، عيار 18)</string>
+    <string name="alert_below">نبّهني تحت (درهم/غ، عيار 18)</string>
+    <string name="save">حفظ</string>
+    <string name="settings_language">اللغة</string>
+    <string name="lang_fr">Français</string>
+    <string name="lang_ar">العربية</string>
+    <string name="about_title">حول البيانات</string>
+    <string name="about_schedule">التحديثات المبرمجة: 07:00 و10:00 و13:00 و18:00 من الاثنين إلى السبت (توقيت المغرب). قد يؤجّل أندرويد التنفيذ في الخلفية.</string>
+    <string name="about_sources">سعر الذهب: GoldPrice.dev (متأخر 15 دقيقة). سعر الصرف: ExchangeRate-API.com (https://www.exchangerate-api.com). أسعار نظرية وغير ملزمة.</string>
+</resources>
