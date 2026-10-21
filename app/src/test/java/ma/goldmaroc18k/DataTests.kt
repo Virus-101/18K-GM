@@ -211,3 +211,23 @@ class RepositoryTest {
         assertTrue(r.fullSuccess)
     }
 }
+
+class UpdateCheckerTest {
+    @Test fun `comparaison de versions`() {
+        assertTrue(VersionCompare.isNewer("beta-1.2.0", "1.1.0"))
+        assertTrue(VersionCompare.isNewer("v1.10.0", "1.9.9"))
+        assertFalse(VersionCompare.isNewer("beta-1.1.0", "1.1.0"))
+        assertFalse(VersionCompare.isNewer("beta-1.0.9", "1.1.0"))
+        assertFalse(VersionCompare.isNewer("nightly", "1.1.0"))
+    }
+    private val json = """[{"tag_name":"beta-1.0.0","html_url":"https://x/1","draft":false,"assets":[]},
+        {"tag_name":"beta-1.2.0","html_url":"https://x/2","draft":false,"assets":[{"browser_download_url":"https://x/app.apk"}]},
+        {"tag_name":"beta-9.9.9","html_url":"https://x/draft","draft":true,"assets":[]}]"""
+    @Test fun `trouve la plus recente non brouillon avec apk`() {
+        val u = UpdateChecker.parse(json, "1.1.0")!!
+        assertEquals("beta-1.2.0", u.version); assertEquals("https://x/app.apk", u.apkUrl)
+    }
+    @Test fun `aucune mise a jour si a jour, json invalide ou null`() {
+        assertNull(UpdateChecker.parse(json, "1.2.0")); assertNull(UpdateChecker.parse("pas du json", "1.0.0")); assertNull(UpdateChecker.parse(null, "1.0.0"))
+    }
+}

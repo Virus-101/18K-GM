@@ -68,6 +68,8 @@ private fun pct(v: Double?): String? = v?.let { String.format(Locale.getDefault(
 @Composable
 fun HomeScreen(vm: GoldViewModel) {
     val s by vm.ui.collectAsState()
+    val upd by vm.update.collectAsState()
+    val ctx = androidx.compose.ui.platform.LocalContext.current
     val warnings = buildList {
         if (s.freshness.status != DataStatus.UNAVAILABLE) {
             add(stringResource(R.string.warn_gold_delay))
@@ -79,6 +81,19 @@ fun HomeScreen(vm: GoldViewModel) {
         s.lastError?.let { add(it) }
     }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        upd?.let { u ->
+            item {
+                Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer), modifier = Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(stringResource(R.string.update_available, u.version), fontWeight = FontWeight.SemiBold)
+                        Button(onClick = {
+                            ctx.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(u.apkUrl ?: u.pageUrl)))
+                        }) { Text(stringResource(R.string.update_download)) }
+                        Text(stringResource(R.string.update_hint), style = MaterialTheme.typography.labelSmall)
+                    }
+                }
+            }
+        }
         item {
             val (label, color) = when (s.freshness.status) {
                 DataStatus.UP_TO_DATE -> stringResource(R.string.status_ok) to Color(0xFF2E7D32)

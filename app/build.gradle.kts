@@ -1,9 +1,15 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("com.google.devtools.ksp")
+}
+
+val ksProps = Properties().apply {
+    rootProject.file("keystore.properties").takeIf { it.exists() }?.inputStream()?.use { load(it) }
 }
 
 android {
@@ -14,16 +20,27 @@ android {
         applicationId = "ma.goldmaroc18k"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.1.0"
         // URL du backend optionnel (voir backend/README.md). Vide = appels directs aux deux API.
         buildConfigField("String", "BACKEND_URL", "\"${project.findProperty("goldBackendUrl") ?: ""}\"")
         buildConfigField("String", "BACKEND_TOKEN", "\"${project.findProperty("goldBackendToken") ?: ""}\"")
     }
 
+    signingConfigs {
+        if (!ksProps.isEmpty) {
+            create("release") {
+                storeFile = rootProject.file(ksProps.getProperty("storeFile").removePrefix("../")).takeIf { it.exists() } ?: file(ksProps.getProperty("storeFile"))
+                storePassword = ksProps.getProperty("storePassword")
+                keyAlias = ksProps.getProperty("keyAlias")
+                keyPassword = ksProps.getProperty("keyPassword")
+            }
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.findByName("release")
         }
     }
     compileOptions {

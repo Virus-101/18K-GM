@@ -61,6 +61,8 @@ class GoldViewModel(app: Application) : AndroidViewModel(app) {
     private val dao = goldApp.db.dao()
     private val prefs = goldApp.prefs
 
+    private val _update = MutableStateFlow<ma.goldmaroc18k.data.UpdateInfo?>(null)
+    val update: StateFlow<ma.goldmaroc18k.data.UpdateInfo?> = _update
     private val range = MutableStateFlow(Range.H24)
     private val refreshing = MutableStateFlow(false)
     private val lastResult = MutableStateFlow<RefreshResult?>(null)
@@ -92,6 +94,7 @@ class GoldViewModel(app: Application) : AndroidViewModel(app) {
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), HomeUi())
 
     init {
+        viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) { _update.value = goldApp.updateChecker.check() }
         // Rattrapage au lancement : si le dernier créneau échu n'a pas été honoré, on actualise.
         viewModelScope.launch {
             val now = Instant.now()

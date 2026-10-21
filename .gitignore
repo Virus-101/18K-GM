@@ -8,3 +8,5 @@ backend/node_modules/
 .kotlin/
 *.apk
 release/
+keystore/
+keystore.properties
