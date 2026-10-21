@@ -27,11 +27,11 @@ import java.time.Duration
 import java.time.Instant
 import java.time.ZonedDateTime
 
-enum class Range(val label: String, val duration: Duration) {
-    H24("24 h", Duration.ofHours(24)),
-    D7("7 j", Duration.ofDays(7)),
-    D30("30 j", Duration.ofDays(30)),
-    Y1("1 an", Duration.ofDays(365)),
+enum class Range(@androidx.annotation.StringRes val labelRes: Int, val duration: Duration) {
+    H24(ma.goldmaroc18k.R.string.range_24h, Duration.ofHours(24)),
+    D7(ma.goldmaroc18k.R.string.range_7d, Duration.ofDays(7)),
+    D30(ma.goldmaroc18k.R.string.range_30d, Duration.ofDays(30)),
+    Y1(ma.goldmaroc18k.R.string.range_1y, Duration.ofDays(365)),
 }
 
 data class HomeUi(

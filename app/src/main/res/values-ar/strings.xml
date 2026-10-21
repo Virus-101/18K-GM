@@ -11,7 +11,7 @@
     <string name="tab_settings">الإعدادات</string>
 
     <string name="label_18k">ذهب عيار 18</string>
-    <string name="label_24k">ذهب عيار 24</string>
+    <string name="label_24k">ذهب عيار 24 (درهم/غ)</string>
     <string name="label_xau">XAU/USD (الأونصة)</string>
     <string name="label_fx">USD/MAD</string>
     <string name="unit_mad_g">درهم/غ</string>
@@ -44,7 +44,7 @@
 
     <string name="chart_title">تطوّر سعر عيار 18</string>
     <string name="chart_note">نقاط سجّلها التطبيق عند كل تحديث ناجح. لا يتم استيراد أي تاريخ خارجي.</string>
-    <string name="chart_empty">عدد النقاط المسجّلة غير كافٍ لهذه الفترة (%1$d).</string>
+    <string name="chart_empty">عدد النقاط المسجّلة غير كافٍ لهذه الفترة (%1$d من 2 مطلوبة). يظهر المنحنى بعد تحديثين ناجحين.</string>
     <string name="chart_span">أول نقطة مسجّلة: %1$s</string>
 
     <string name="calc_title">الحاسبة</string>
@@ -56,9 +56,14 @@
     <string name="alert_below">نبّهني تحت (درهم/غ، عيار 18)</string>
     <string name="save">حفظ</string>
     <string name="settings_language">اللغة</string>
+    <string name="lang_en">English</string>
     <string name="lang_fr">Français</string>
     <string name="lang_ar">العربية</string>
     <string name="about_title">حول البيانات</string>
     <string name="about_schedule">التحديثات المبرمجة: 07:00 و10:00 و13:00 و18:00 من الاثنين إلى السبت (توقيت المغرب). قد يؤجّل أندرويد التنفيذ في الخلفية.</string>
     <string name="about_sources">سعر الذهب: GoldPrice.dev (متأخر 15 دقيقة). سعر الصرف: ExchangeRate-API.com (https://www.exchangerate-api.com). أسعار نظرية وغير ملزمة.</string>
+    <string name="range_24h">24 س</string>
+    <string name="range_7d">7 أيام</string>
+    <string name="range_30d">30 يومًا</string>
+    <string name="range_1y">سنة</string>
 </resources>

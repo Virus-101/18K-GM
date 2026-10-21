@@ -4,6 +4,8 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.room.Room
 import ma.goldmaroc18k.data.AppDatabase
 import ma.goldmaroc18k.data.AppPrefs
@@ -32,6 +34,7 @@ class GoldApp : Application() {
         val backend = BuildConfig.BACKEND_URL.takeIf { it.isNotBlank() }
             ?.let { BackendClient(http, it, BuildConfig.BACKEND_TOKEN) }
         repository = PriceRepository(db.dao(), gold::fetch, fx::fetch, backend?.let { b -> { b.latest() } }, prefs)
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(prefs.language))
         createChannel()
         RefreshScheduler.ensureScheduled(this)
     }

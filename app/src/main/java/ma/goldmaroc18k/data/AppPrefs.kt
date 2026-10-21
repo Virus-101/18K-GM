@@ -17,9 +17,9 @@ class AppPrefs(context: Context) : SyncState {
         get() = sp.getBoolean("notif", true)
         set(v) = sp.edit { putBoolean("notif", v) }
 
-    /** "fr" ou "ar" */
+    /** "en" (défaut), "fr" ou "ar" */
     var language: String
-        get() = sp.getString("lang", "fr") ?: "fr"
+        get() = sp.getString("lang", "en") ?: "en"
         set(v) = sp.edit { putString("lang", v) }
 
     var alertAbove: Double?

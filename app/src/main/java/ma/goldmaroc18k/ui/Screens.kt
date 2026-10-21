@@ -108,7 +108,7 @@ fun HomeScreen(vm: GoldViewModel) {
         }
         item {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                InfoCard(Modifier.weight(1f), stringResource(R.string.label_24k), "${money(s.p24)} MAD/g", null)
+                InfoCard(Modifier.weight(1f), stringResource(R.string.label_24k), money(s.p24), null)
                 InfoCard(Modifier.weight(1f), stringResource(R.string.label_xau), money(s.xauUsd), stringResource(R.string.source_at, fmtTs(s.goldSourceTs)))
             }
         }
@@ -143,7 +143,7 @@ fun HomeScreen(vm: GoldViewModel) {
             Text(stringResource(R.string.chart_title), style = MaterialTheme.typography.titleMedium)
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(vertical = 8.dp)) {
                 items(Range.entries.toList()) { r ->
-                    FilterChip(selected = s.range == r, onClick = { vm.setRange(r) }, label = { Text(r.label) })
+                    FilterChip(selected = s.range == r, onClick = { vm.setRange(r) }, label = { Text(stringResource(r.labelRes)) })
                 }
             }
             if (s.chart.size < 2) {
@@ -162,7 +162,7 @@ private fun InfoCard(modifier: Modifier, title: String, value: String, sub: Stri
     Card(modifier = modifier) {
         Column(Modifier.padding(12.dp)) {
             Text(title, style = MaterialTheme.typography.labelMedium)
-            Text(value, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
+            Text(value, fontSize = 20.sp, maxLines = 2, fontWeight = FontWeight.SemiBold)
             if (sub != null) Text(sub, style = MaterialTheme.typography.labelSmall)
         }
     }
@@ -254,6 +254,7 @@ fun SettingsScreen(
         }
         item {
             Text(stringResource(R.string.settings_language), style = MaterialTheme.typography.titleMedium)
+            Row(verticalAlignment = Alignment.CenterVertically) { RadioButton(language == "en", { onLanguage("en") }); Text(stringResource(R.string.lang_en)) }
             Row(verticalAlignment = Alignment.CenterVertically) { RadioButton(language == "fr", { onLanguage("fr") }); Text(stringResource(R.string.lang_fr)) }
             Row(verticalAlignment = Alignment.CenterVertically) { RadioButton(language == "ar", { onLanguage("ar") }); Text(stringResource(R.string.lang_ar)) }
         }
