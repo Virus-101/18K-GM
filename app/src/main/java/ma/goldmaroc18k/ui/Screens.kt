@@ -86,9 +86,16 @@ fun HomeScreen(vm: GoldViewModel) {
                 Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer), modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(stringResource(R.string.update_available, u.version), fontWeight = FontWeight.SemiBold)
-                        Button(onClick = {
-                            ctx.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(u.apkUrl ?: u.pageUrl)))
-                        }) { Text(stringResource(R.string.update_download)) }
+                        val progress by vm.updateProgress.collectAsState()
+                        val err by vm.updateError.collectAsState()
+                        Button(enabled = progress == null, onClick = {
+                            if (u.apkUrl == null) {
+                                ctx.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(u.pageUrl)))
+                            } else if (!ctx.packageManager.canRequestPackageInstalls()) {
+                                ctx.startActivity(android.content.Intent(android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, android.net.Uri.parse("package:" + ctx.packageName)))
+                            } else vm.installUpdate(u)
+                        }) { Text(if (progress != null) stringResource(R.string.update_progress, progress ?: 0) else stringResource(R.string.update_download)) }
+                        err?.let { Text(stringResource(R.string.update_failed, it), style = MaterialTheme.typography.labelSmall) }
                         Text(stringResource(R.string.update_hint), style = MaterialTheme.typography.labelSmall)
                     }
                 }

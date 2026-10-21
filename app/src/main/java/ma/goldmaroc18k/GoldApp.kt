@@ -23,6 +23,8 @@ class GoldApp : Application() {
         private set
     lateinit var repository: PriceRepository
         private set
+    lateinit var http: okhttp3.OkHttpClient
+        private set
     lateinit var updateChecker: ma.goldmaroc18k.data.UpdateChecker
         private set
 
@@ -30,8 +32,8 @@ class GoldApp : Application() {
         super.onCreate()
         db = Room.databaseBuilder(this, AppDatabase::class.java, "gold.db").build()
         prefs = AppPrefs(this)
-        val http = defaultHttpClient()
-        updateChecker = ma.goldmaroc18k.data.UpdateChecker(http, BuildConfig.VERSION_NAME)
+        http = defaultHttpClient()
+        updateChecker = ma.goldmaroc18k.data.UpdateChecker(http, BuildConfig.VERSION_NAME, BuildConfig.UPDATE_API_BASE)
         val gold = GoldPriceClient(http)
         val fx = ExchangeRateClient(http)
         val backend = BuildConfig.BACKEND_URL.takeIf { it.isNotBlank() }

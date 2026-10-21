@@ -20,9 +20,10 @@ android {
         applicationId = "ma.goldmaroc18k"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = (project.findProperty("vc") as String?)?.toInt() ?: 2
+        versionName = (project.findProperty("vn") as String?) ?: "1.1.0"
         // URL du backend optionnel (voir backend/README.md). Vide = appels directs aux deux API.
+        buildConfigField("String", "UPDATE_API_BASE", "\"${project.findProperty("updateApiBase") ?: "https://api.github.com"}\"")
         buildConfigField("String", "BACKEND_URL", "\"${project.findProperty("goldBackendUrl") ?: ""}\"")
         buildConfigField("String", "BACKEND_TOKEN", "\"${project.findProperty("goldBackendToken") ?: ""}\"")
     }

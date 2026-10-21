@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <!-- Debug uniquement : permet de tester la mise à jour contre un serveur local (10.0.2.2). -->
+    <application android:networkSecurityConfig="@xml/network_security_debug" tools:replace="android:usesCleartextTraffic" android:usesCleartextTraffic="false" />
+</manifest>

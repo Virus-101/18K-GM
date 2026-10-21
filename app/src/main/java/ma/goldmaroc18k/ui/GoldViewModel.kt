@@ -63,6 +63,26 @@ class GoldViewModel(app: Application) : AndroidViewModel(app) {
 
     private val _update = MutableStateFlow<ma.goldmaroc18k.data.UpdateInfo?>(null)
     val update: StateFlow<ma.goldmaroc18k.data.UpdateInfo?> = _update
+    /** null = repos ; 0..100 = téléchargement ; -1 = échec */
+    val updateProgress = MutableStateFlow<Int?>(null)
+    val updateError = MutableStateFlow<String?>(null)
+
+    fun installUpdate(info: ma.goldmaroc18k.data.UpdateInfo) {
+        val url = info.apkUrl ?: return
+        if (updateProgress.value != null) return
+        updateError.value = null
+        updateProgress.value = 0
+        viewModelScope.launch {
+            try {
+                ma.goldmaroc18k.data.UpdateInstaller.downloadAndInstall(goldApp, goldApp.http, url) { updateProgress.value = it }
+            } catch (e: Exception) {
+                updateError.value = e.message ?: "error"
+            } finally {
+                updateProgress.value = null
+            }
+        }
+    }
+
     private val range = MutableStateFlow(Range.H24)
     private val refreshing = MutableStateFlow(false)
     private val lastResult = MutableStateFlow<RefreshResult?>(null)
